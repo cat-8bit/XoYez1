@@ -1,0 +1,57 @@
+{
+  "sections": [
+    {
+      "id": "xiaoye",
+      "title": "小叶",
+      "type": "character",
+      "infobox": {
+        "img": "img/xoyez1.webp",
+        "title": "角色信息",
+        "fields": [
+          { "label": "首次出现", "value": "2024-11-14" },
+          { "label": "核心部件", "value": "血肉" },
+          { "label": "当前状态", "value": "活着", "class": "text-green-600" }
+        ]
+      },
+      "custom_content": "<div class='flex justify-between max-w-[600px] mt-4 border-t-2 border-gray-800 pt-2 font-bold text-lg text-blue-900 px-2'><span>总计预估</span><span>不买！！！！！！！！</span></div>"
+    },
+    {
+      "id": "xiaoyepc",
+      "title": "电脑配置",
+      "type": "hardware",
+      "infobox": {
+        "img": "img/datapc1.png",
+        "title": "硬件概览",
+        "fields": [
+          { "label": "首次发布", "value": "2025-11-21 <br><a href='https://www.bilibili.com/video/BV1pcUjBqEzZ' class='text-blue-600 text-xs'>（仅bilibili发布）</a>" },
+          { "label": "硬件规格", "value": "RTX 5090 / R9 9950X3D" },
+          { "label": "运行状态", "value": "正常（应该吧）" }
+        ]
+      },
+      "items": [
+        { "label": "CPU: AMD Ryzen 9 9950X3D", "price": 5000, "unit": "CNY", "link": "https://www.google.com/search?q=AMD+Ryzen+9+9950X3D" },
+        { "label": "内存: 32GB High-Speed DDR5", "price": 2000, "unit": "CNY", "link": "https://www.google.com/search?q=ddr5+32g" },
+        { "label": "GPU: NVIDIA GeForce RTX 5090", "price": 27000, "unit": "CNY", "link": "https://www.google.com/search?q=NVIDIA+GeForce+RTX+5090" },
+        { "label": "操作系统: Windows 11 专业版", "price": 0, "unit": "CNY", "link": "https://www.microsoft.com/zh-cn/software-download/windows11", "label_class": "text-green-600" }
+      ]
+    },
+    {
+      "id": "xiaoyedefile",
+      "title": "原模改模",
+      "type": "hardware",
+      "infobox": {
+        "img": "img/def.png",
+        "title": "资产概览",
+        "fields": [
+          { "label": "首次出没", "value": "2025-11-21" },
+          { "label": "模型核心", "value": "まめひなた" },
+          { "label": "当前版本", "value": "正常使用中" }
+        ]
+      },
+      "items": [
+        { "label": "まめひなた Mamehinata 原型", "price": 5000, "unit": "JPY", "link": "https://booth.pm/zh-cn/items/4340548" },
+        { "label": "定制改模费用", "price": 50, "unit": "CNY", "link": "#" }
+      ]
+    }
+  ]
+}
