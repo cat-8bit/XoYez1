@@ -7,13 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #f6f6f6; color: #202122; line-height: 1.6; font-family: sans-serif; }
-        。mw-body { background-color: #ffffff; border: 1px solid #a7d7f9; margin: 0 auto; max-width: 1100px; padding: 32px; min-height: 100vh; }
-        。infobox { border: 1px solid #a2a9b1; background-color: #f8f9fa; width: 280px; float: right; margin: 0 0 1em 1em; padding: 0.2em; font-size: 88%; border-spacing: 3px; }
-        。infobox-title { font-size: 125%; font-weight: bold; text-align: center; background-color: #cedff2; padding: 4px; }
-        。config-link { display: flex; justify-content: space-between; border-bottom: 1px solid #eaecef; padding: 10px 8px; max-width: 600px; transition: all 0.2s ease; text-decoration: none; color: inherit; }
-        。config-link:hover { background-color: #f0f7ff; border-left: 4px solid #3366cc; padding-left: 12px; }
-        。config-label { font-weight: bold; color: #3366cc; }
-        。section-title { font-family: 'serif'; margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.25rem; border-bottom: 1px solid #a2a9b1; }
+        .mw-body { background-color: #ffffff; border: 1px solid #a7d7f9; margin: 0 auto; max-width: 1100px; padding: 32px; min-height: 100vh; }
+        .infobox { border: 1px solid #a2a9b1; background-color: #f8f9fa; width: 280px; float: right; margin: 0 0 1em 1em; padding: 0.2em; font-size: 88%; border-spacing: 3px; }
+        .infobox-title { font-size: 125%; font-weight: bold; text-align: center; background-color: #cedff2; padding: 4px; }
+        .config-link { display: flex; justify-content: space-between; border-bottom: 1px solid #eaecef; padding: 10px 8px; max-width: 600px; transition: all 0.2s ease; text-decoration: none; color: inherit; }
+        .config-link:hover { background-color: #f0f7ff; border-left: 4px solid #3366cc; padding-left: 12px; }
+        .config-label { font-weight: bold; color: #3366cc; }
+        .section-title { font-family: 'serif'; margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.25rem; border-bottom: 1px solid #a2a9b1; }
     </style>
 </head>
 <body>
@@ -118,7 +118,10 @@
                             <div class="article-content">${contentHtml}</div>
                         </section>`;
                 });
-
+console.log("获取到的配置数据：", config);
+if (!config.sections || config.sections.length === 0) {
+    app.innerHTML = "JSON 数据里没有发现 sections 列表！";
+}
             } catch (err) {
                 console.error("渲染引擎故障:", err);
                 app.innerHTML = `
