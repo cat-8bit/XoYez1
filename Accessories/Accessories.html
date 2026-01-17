@@ -40,7 +40,7 @@
         async function start() {
             try {
                 // 读取汇率和数据
-                const [r, d] = await Promise.all([fetch('./rate.json'), fetch('./data.json')]);
+                const [r, d] = await Promise.all([fetch('/XoYez1/rate.json'), fetch('./data.json')]);
                 const rateData = await r.json();
                 const config = await d.json();
                 const JPY_RATE = rateData.rate;
