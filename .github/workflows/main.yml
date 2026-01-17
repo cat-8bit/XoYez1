@@ -1,0 +1,35 @@
+name: Update Exchange Rate
+
+on:
+  schedule:
+    # 定时任务：每 12 小时运行一次 (UTC 时间)
+    - cron: '0 */12 * * *'
+  workflow_dispatch: # 允许你手动点击按钮触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 设置 Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: 安装依赖
+        run: pip install requests
+
+      - name: 执行更新脚本
+        env:
+          EXCHANGE_RATE_API_KEY: ${{ secrets.EXCHANGE_RATE_API_KEY }}
+        run: python update_rate.py
+
+      - name: 提交并推送更改
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add rate.json
+          git commit -m "Update exchange rate $(date)" || exit 0
+          git push
