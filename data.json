@@ -1,0 +1,254 @@
+[
+    {
+        "id": "A001",
+        "name": "百度搜索 (远程网页)",
+        "category": "工具",
+        "desc": "直接在右侧区域加载百度首页，演示远程网页兼容性。",
+        "page_url": "https://www.baidu.com",
+        "links": []
+    },
+    {
+        "id": "A002",
+        "name": "本地详情页 (HTML文件)",
+        "category": "文档",
+        "desc": "假设你本地有一个 detail.html 页面，系统会自动加载它。",
+        "page_url": "./index.html",
+        "links": [
+            { "label": "查看源文件", "url": "#" }
+        ]
+    },
+    {
+        "id": "A003",
+        "name": "bilibili",
+        "category": "工具",
+        "desc": "直接在右侧区域加载百度首页，演示远程网页兼容性。",
+        "page_url": "https://space.bilibili.com/353542970?spm_id_from=333.337.0.0",
+        "links": []
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_03",
+        "name": "纯文字物品 (JSON模式)",
+        "category": "说明",
+        "desc": "这个物品没有配置 page_url，因此会展示 JSON 里的这段详细描述文本。它可以作为网页缺失时的备份方案。",
+        "page_url": "",
+        "links": [
+            { "label": "官方手册", "url": "https://example.com" },
+            { "label": "反馈建议", "url": "mailto:test@example.com" }
+        ]
+    },
+    {
+        "id": "test_04",
+        "name": "3D 模型演示",
+        "category": "多媒体",
+        "desc": "这里可以嵌入复杂的 WebGL 或 Three.js 页面。",
+        "page_url": "https://threejs.org/examples/webgl_animation_keyframes.html",
+        "links": []
+    },
+    {
+        "id": "test_05",
+        "name": "维基百科 (测试跨域)",
+        "category": "百科",
+        "desc": "注意：部分网站（如百度、谷歌）可能禁止被 iframe 嵌入，这取决于对方的安全策略。",
+        "page_url": "https://zh.m.wikipedia.org",
+        "links": []
+    }
+
+]

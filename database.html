@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>粉丝墙</title>
+
+    <style>
+
+        * { box-sizing: border-box; }
+
+        
+
+        /* --- 0. 全局隐藏滚动条 (与首页一致) --- */
+
+        body, html { 
+
+            margin: 0; padding: 0; height: 100%; 
+
+            overflow: hidden; background: #f0f2f5; 
+
+            font-family: "PingFang SC", "Segoe UI", sans-serif; 
+
+            scrollbar-width: none;
+
+            -ms-overflow-style: none;
+
+        }
+
+        html::-webkit-scrollbar { display: none; }
+
+
+
+        /* --- 1. 扁平化顶部导航栏 (高度44px，样式与首页100%对齐) --- */
+
+        .main-header {
+
+            height: 44px; /* 关键修改：从60降至44 */
+
+            background: #2c3e50; /* 颜色对齐 */
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+            position: relative;
+
+            z-index: 100;
+
+        }
+
+
+
+        .logo { font-size: 18px; font-weight: bold; color: #3498db; }
+
+        
+
+        .main-nav-links { display: flex; gap: 10px; }
+
+        .main-nav-links a { 
+
+            color: #ecf0f1; text-decoration: none; font-size: 13px; 
+
+            transition: 0.3s; padding: 4px 12px; border-radius: 4px;
+
+        }
+
+        .main-nav-links a:hover { background: rgba(255,255,255,0.1); }
+
+        .main-nav-links a.active { background: #3498db; color: white; }
+
+
+
+        /* --- 2. 下方功能区容器 --- */
+
+        .app-container { 
+
+            display: flex; 
+
+            height: calc(100vh - 44px); /* 动态减去44px */
+
+            width: 100vw; 
+
+        }
+
+
+
+        /* --- 3. 左侧侧边栏 (深度扁平化) --- */
+
+        .sidebar { 
+
+            width: 280px; background: #f8f9fa; /* 稍微调浅，突出内容区 */
+
+            display: flex; flex-direction: column; 
+
+            border-right: 1px solid #ddd; color: #333; 
+
+        }
+
+
+
+        .search-box { padding: 15px; background: #eee; }
+
+        #itemSearch { 
+
+            width: 100%; padding: 8px 15px; border-radius: 4px; /* 圆角改为小矩形 */
+
+            border: 1px solid #ccc; background: white; color: #333; outline: none;
+
+            font-size: 13px;
+
+        }
+
+
+
+        /* 侧边栏内部滚动条 (保留，方便操作) */
+
+        .nav-list { flex: 1; overflow-y: auto; }
+
+        .nav-list::-webkit-scrollbar { width: 4px; }
+
+        .nav-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+
+
+        .nav-btn { padding: 12px 20px; cursor: pointer; border-bottom: 1px solid #eee; transition: 0.2s; font-size: 14px; color: #555; }
+
+        .nav-btn:hover { background: #edf2f7; color: #3498db; }
+
+        .nav-btn.active { background: #3498db; color: white; }
+
+
+
+        /* --- 4. 右侧展示区 --- */
+
+        .main-content { flex: 1; position: relative; background: white; }
+
+        
+
+        #loading-layer {
+
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+
+            background: white; display: none; flex-direction: column;
+
+            align-items: center; justify-content: center; z-index: 10;
+
+        }
+
+        .loading-gif { width: 50px; height: 50px; }
+
+
+
+        #text-view { padding: 40px; height: 100%; overflow-y: auto; display: none; }
+
+        #iframe-view { width: 100%; height: 100%; border: none; display: none; }
+
+        #placeholder { display: flex; align-items: center; justify-content: center; height: 100%; color: #bdc3c7; }
+
+    a:link {
+
+    text-decoration: none;
+
+}
+
+a:visited {
+
+    text-decoration: none;
+
+}
+
+a:hover {
+
+    text-decoration: none;
+
+}
+
+a:active {
+
+    text-decoration: none;
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <header class="main-header">
+
+        <div class="logo"><a href="index.html" style="color: #ffffff"> 首页</a></div>
+
+        <nav class="main-nav-links">
+
+            <a href="index.html">Wiki 首页</a>
+
+            <a href="database.html" class="active">档案资料库</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <div class="app-container">
+
+        <div class="sidebar">
+
+            <div class="search-box">
+
+                <input type="text" id="itemSearch" placeholder="搜索档案...">
+
+            </div>
+
+            <div id="nav-list" class="nav-list"></div>
+
+        </div>
+
+
+
+        <div class="main-content">
+
+            <div id="loading-layer">
+
+                <img src="https://i.gifer.com/ZKZg.gif" class="loading-gif" alt="加载中">
+
+                <p style="color: #95a5a6; font-size: 12px; margin-top: 10px;">正在调取资源...</p>
+
+            </div>
+
+
+
+            <div id="placeholder"><h3>请从左侧选择档案条目</h3></div>
+
+            
+
+            <div id="text-view">
+
+                <h1 id="view-title"></h1>
+
+                <p id="view-desc"></p>
+
+            </div>
+
+
+
+            <iframe id="iframe-view"></iframe>
+
+        </div>
+
+    </div>
+
+
+
+<script>
+let allItems = [];
+    const textView = document.getElementById('text-view');
+    const iframeView = document.getElementById('iframe-view');
+    const loadingLayer = document.getElementById('loading-layer');
+    const placeholder = document.getElementById('placeholder');
+
+    async function loadData() {
+        try {
+            const response = await fetch('data.json');
+            allItems = await response.json();
+            renderList(allItems);
+            
+            // 页面加载后，检查 URL 是否带有 ?id=xxx 参数
+            checkUrlParams(); 
+        } catch (e) { console.error("数据加载失败", e); }
+    }
+
+    function renderList(data) {
+        const navList = document.getElementById('nav-list');
+        navList.innerHTML = '';
+        data.forEach(item => {
+            const btn = document.createElement('div');
+            btn.className = 'nav-btn';
+            // 使用 id 作为 DOM 元素的识别属性
+            btn.setAttribute('data-id', item.id); 
+            btn.innerText = item.name;
+            btn.onclick = () => updateContent(item, btn);
+            navList.appendChild(btn);
+        });
+    }
+
+    // 解析 URL 参数：监听 ?id=xxx
+    function checkUrlParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetId = urlParams.get('id'); 
+        
+        if (targetId) {
+            // 在数据中匹配 id
+            const item = allItems.find(i => String(i.id) === String(targetId));
+            if (item) {
+                // 找到对应的按钮并触发展示
+                const btn = document.querySelector(`.nav-btn[data-id="${targetId}"]`);
+                if (btn) {
+                    updateContent(item, btn);
+                }
+            }
+        }
+    }
+
+    function updateContent(item, element) {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        element.classList.add('active');
+        placeholder.style.display = 'none';
+
+        if (item.page_url && item.page_url !== "") {
+            textView.style.display = 'none';
+            iframeView.style.display = 'none';
+            loadingLayer.style.display = 'flex';
+            iframeView.src = item.page_url;
+            iframeView.onload = function() {
+                loadingLayer.style.display = 'none';
+                iframeView.style.display = 'block';
+            };
+        } else {
+            loadingLayer.style.display = 'none';
+            iframeView.style.display = 'none';
+            textView.style.display = 'block';
+            document.getElementById('view-title').innerText = item.name;
+            document.getElementById('view-desc').innerText = item.desc;
+        }
+    }
+
+    document.getElementById('itemSearch').addEventListener('input', (e) => {
+        const kw = e.target.value.toLowerCase();
+        // 搜索依然支持按名称搜索，提升用户体验
+        const filtered = allItems.filter(i => i.name.toLowerCase().includes(kw));
+        renderList(filtered);
+    });
+
+    loadData();
+</script>   
+
+</body>
+
+
+
+</html>

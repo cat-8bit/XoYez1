@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+	<title>黑历史墙</title>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; }
+        #wrapper {
+            width: 100vw; height: 100vh;
+            overflow-y: auto; overflow-x: hidden;
+            scrollbar-width: none; -ms-overflow-style: none;
+        }
+        #wrapper::-webkit-scrollbar { display: none; }
+        
+        /* 瀑布流：自动计算左右边界 */
+        #gallery {
+            column-width: 280px; /* 每列宽度 */
+            column-gap: 10px;
+            padding: 10px;
+        }
+		        .header-logo { 
+            font-size: 18px; 
+            font-weight: bold; 
+            padding: 10px 0;
+        }
+		  .global-header {
+            min-height: 44px;
+            background: #2c3e50; 
+            color: white;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            padding: 0 40px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+        .img-box {
+            display: inline-block; width: 100%;
+            margin-bottom: 10px; break-inside: avoid;
+            background: #222; border-radius: 8px;
+        }
+        img {
+            width: 100%; height: auto; /* 仅缩放，不改宽度 */
+            display: block; border-radius: 8px;
+        }
+    a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+<header class="global-header">
+        <div class="header-logo"><a href="index.html" style="color: #ffffff">首页</a></div>
+    </header>
+    <div id="wrapper">
+        <div id="gallery"></div>
+    </div>
+
+<script src="data.js"></script>
+<script>
+        const container = document.getElementById('gallery');
+        
+        // 检查数据是否加载
+        if (typeof imageFiles === 'undefined') {
+            alert("错误：未能加载 data.js，请检查文件名和路径！");
+        } else {
+            // 随机排序
+            const shuffled = imageFiles.sort(() => Math.random() - 0.5);
+            
+            shuffled.forEach(name => {
+                const box = document.createElement('div');
+                box.className = 'img-box';
+                const img = document.createElement('img');
+                
+                // 路径指向 img2 文件夹
+                img.src = 'img2/' + name;
+                
+                img.onerror = () => {
+                    console.error("无法加载图片: img2/" + name);
+                    box.remove();
+                };
+                
+                box.appendChild(img);
+                container.appendChild(box);
+            });
+        }
+    </script>
+</body>
+
+</html>
