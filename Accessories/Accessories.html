@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>喵喵喵</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #f6f6f6; color: #202122; line-height: 1.6; font-family: sans-serif; }
+        .mw-body { background-color: #ffffff; border: 1px solid #a7d7f9; margin: 0 auto; max-width: 1100px; padding: 32px; min-height: 100vh; }
+        .infobox { border: 1px solid #a2a9b1; background-color: #f8f9fa; width: 280px; float: right; margin: 0 0 1em 1em; padding: 0.2em; font-size: 88%; border-spacing: 3px; }
+        .infobox-title { font-size: 125%; font-weight: bold; text-align: center; background-color: #cedff2; padding: 4px; }
+        .config-link { display: flex; justify-content: space-between; border-bottom: 1px solid #eaecef; padding: 10px 8px; max-width: 600px; transition: all 0.2s ease; text-decoration: none; color: inherit; }
+        .config-link:hover { background-color: #f0f7ff; border-left: 4px solid #3366cc; padding-left: 12px; }
+        .config-label { font-weight: bold; color: #3366cc; }
+        .section-title { font-family: 'serif'; margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.25rem; border-bottom: 1px solid #a2a9b1; }
+    </style>
+</head>
+<body>
+
+    <header class="bg-[#2c3e50] text-white px-6 py-3 sticky top-0 z-50 flex justify-between items-center shadow-md">
+        <div class="font-bold text-lg"><a href="/Xoyez1/index.html">首页</a></div>
+        <div id="top-rate" class="text-sm opacity-80 font-mono"></div>
+    </header>
+
+    <div class="mt-8 px-4 pb-12">
+        <div class="mw-body">
+            <h1 class="text-4xl font-serif mb-6">测试标题（绝对不是我不知道写什么！绝对不是！！！）</h1>
+            
+            <div id="app"></div>
+
+            <footer class="clear-both mt-16 pt-8 border-t border-gray-300 text-xs text-gray-500">
+                <p>最后编辑于 2026年1月17日。</p>
+                <p id="rate-meta" class="mt-2"></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        async function start() {
+            try {
+                // 读取汇率和数据
+                const [r, d] = await Promise.all([fetch('./rate.json'), fetch('./data.json')]);
+                const rateData = await r.json();
+                const config = await d.json();
+                const JPY_RATE = rateData.rate;
+
+                document.getElementById('top-rate').innerText = `汇率 1 JPY = ${JPY_RATE.toFixed(4)} CNY`;
+                document.getElementById('rate-meta').innerText = `汇率数据同步时间: ${rateData.last_update}`;
+
+                const app = document.getElementById('app');
+
+                config.sections.forEach(sec => {
+                    // 构建 InfoBox 表格行
+                    const rows = sec.infobox.fields.map(f => `
+                        <tr>
+                            <th class="border-t">${f.label}</th>
+                            <td class="border-t ${f.class || ''}">${f.value}</td>
+                        </tr>`).join('');
+
+                    // 处理内容区域
+                    let content = "";
+                    if (sec.type === "character") {
+                        content = sec.custom_content;
+                    } else {
+                        let total = 0;
+                        const items = sec.items.map(i => {
+                            let pstr = "";
+                            if (i.unit === "JPY") {
+                                const c = i.price * JPY_RATE;
+                                total += c;
+                                pstr = `${i.price.toLocaleString()} JPY <span class="text-xs text-gray-400 ml-1">(折合 ¥${c.toFixed(2)})</span>`;
+                            } else {
+                                total += i.price;
+                                pstr = `${i.price.toLocaleString()} 元`;
+                            }
+                            return `<a href="${i.link}" target="_blank" class="config-link">
+                                        <span class="config-label ${i.label_class || ''}">${i.label}</span>
+                                        <span class="font-mono text-gray-700 text-sm">${pstr}</span>
+                                    </a>`;
+                        }).join('');
+
+                        content = `${items}
+                            <div class="flex justify-between max-w-[600px] mt-4 border-t-2 border-gray-800 pt-2 font-bold text-lg text-blue-900 px-2">
+                                <span>总计预估</span>
+                                <span>${total.toLocaleString(undefined, {minimumFractionDigits: 2})} 元</span>
+                            </div>`;
+                    }
+
+                    // 拼装整体
+                    app.innerHTML += `
+                        <section class="mb-16 clear-both">
+                            <h2 class="section-title text-2xl" id="${sec.id}">${sec.title}</h2>
+                            <table class="infobox shadow-sm">
+                                <tr><th colspan="2" class="infobox-title">${sec.infobox.title}</th></tr>
+                                <tr><td colspan="2" class="p-0"><img src="${sec.infobox.img}" class="max-w-full h-auto mx-auto" onerror="this.src='https://placehold.co/300x200?text=Image+Missing'"></td></tr>
+                                ${rows}
+                            </table>
+                            <div class="article-content">${content}</div>
+                        </section>`;
+                });
+            } catch (err) { console.error("渲染失败:", err); }
+        }
+        start();
+    </script>
+</body>
+</html>
