@@ -7,13 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #f6f6f6; color: #202122; line-height: 1.6; font-family: sans-serif; }
-        .mw-body { background-color: #ffffff; border: 1px solid #a7d7f9; margin: 0 auto; max-width: 1100px; padding: 32px; min-height: 100vh; }
-        .infobox { border: 1px solid #a2a9b1; background-color: #f8f9fa; width: 280px; float: right; margin: 0 0 1em 1em; padding: 0.2em; font-size: 88%; border-spacing: 3px; }
-        .infobox-title { font-size: 125%; font-weight: bold; text-align: center; background-color: #cedff2; padding: 4px; }
-        .config-link { display: flex; justify-content: space-between; border-bottom: 1px solid #eaecef; padding: 10px 8px; max-width: 600px; transition: all 0.2s ease; text-decoration: none; color: inherit; }
-        .config-link:hover { background-color: #f0f7ff; border-left: 4px solid #3366cc; padding-left: 12px; }
-        .config-label { font-weight: bold; color: #3366cc; }
-        .section-title { font-family: 'serif'; margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.25rem; border-bottom: 1px solid #a2a9b1; }
+        。mw-body { background-color: #ffffff; border: 1px solid #a7d7f9; margin: 0 auto; max-width: 1100px; padding: 32px; min-height: 100vh; }
+        。infobox { border: 1px solid #a2a9b1; background-color: #f8f9fa; width: 280px; float: right; margin: 0 0 1em 1em; padding: 0.2em; font-size: 88%; border-spacing: 3px; }
+        。infobox-title { font-size: 125%; font-weight: bold; text-align: center; background-color: #cedff2; padding: 4px; }
+        。config-link { display: flex; justify-content: space-between; border-bottom: 1px solid #eaecef; padding: 10px 8px; max-width: 600px; transition: all 0.2s ease; text-decoration: none; color: inherit; }
+        。config-link:hover { background-color: #f0f7ff; border-left: 4px solid #3366cc; padding-left: 12px; }
+        。config-label { font-weight: bold; color: #3366cc; }
+        。section-title { font-family: 'serif'; margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.25rem; border-bottom: 1px solid #a2a9b1; }
     </style>
 </head>
 <body>
@@ -44,7 +44,7 @@
             try {
                 // 1. 获取数据
                 const [r, d] = await Promise.all([
-                    fetch('XoYez1/rate.json').then(res => res.json()),
+                    fetch('/XoYez1/rate.json').then(res => res.json()),
                     fetch('./data.json').then(res => res.json())
                 ]);
 
@@ -56,7 +56,7 @@
 
                 // 更新页眉显示
                 document.getElementById('top-rate').innerText = `实时汇率: 1 JPY = ${Number(JPY_RATE).toFixed(4)} CNY`;
-                document.getElementById('rate-meta').innerText = `数据来源: 本地 JSON 缓存 | 更新时间: ${r.last_update || '未知'}`;
+                document。getElementById('rate-meta').innerText = `数据来源: 本地 JSON 缓存 | 更新时间: ${r.last_update || '未知'}`;
 
                 // 3. 清空容器并渲染内容
                 app.innerHTML = "";
@@ -110,7 +110,7 @@
                                 <tr><th colspan="2" class="infobox-title">${sec.infobox.title}</th></tr>
                                 <tr><td colspan="2" class="p-0">
                                     <div class="bg-gray-100 w-full flex items-center justify-center overflow-hidden min-h-[100px]">
-                                        <img src="${sec.infobox.img}" class="max-w-full h-auto" onerror="this.src='https://placehold.co/400x300?text=图片加载失败'">
+                                        <img src="${sec。infobox.img}" class="max-w-full h-auto" onerror="this.src='https://placehold.co/400x300?text=图片加载失败'">
                                     </div>
                                 </td></tr>
                                 ${rows}
