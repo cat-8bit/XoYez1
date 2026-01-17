@@ -40,8 +40,8 @@
         async function loadPage() {
             try {
                 const [rateRes, dataRes] = await Promise.all([
-                    fetch('/rate.json'),
-                    fetch('/data2.json')
+                    fetch('/XoYez1/rate.json'),
+                    fetch('/XoYez1/data2.json')
                 ]);
                 const rateData = await rateRes.json();
                 const pageData = await dataRes.json();
