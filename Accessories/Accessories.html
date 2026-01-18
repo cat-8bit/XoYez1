@@ -14,83 +14,94 @@
         .config-link:hover { background-color: #f0f7ff; border-left: 4px solid #3366cc; padding-left: 12px; }
         .config-label { font-weight: bold; color: #3366cc; }
         .section-title { font-family: 'serif'; margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.25rem; border-bottom: 1px solid #a2a9b1; }
+        /* 防止加载前闪烁 */
+        [v-cloak] { display: none; }
     </style>
 </head>
 <body>
 
     <header class="bg-[#2c3e50] text-white px-6 py-3 sticky top-0 z-50 flex justify-between items-center shadow-md">
-        <div class="font-bold text-lg"><a href="index.html">首页</a></div>
-        <div id="top-rate" class="text-sm opacity-80 font-mono">正在连接数据源...</div>
+        <div class="font-bold text-lg">首页</div>
+        <div id="top-rate" class="text-sm opacity-80 font-mono">同步中...</div>
     </header>
 
     <div class="mt-8 px-4 pb-12">
-        <div class="mw-body" id="main-frame">
+        <div class="mw-body">
             <h1 class="text-4xl font-serif mb-6">测试标题（绝对不是我不知道写什么！绝对不是！！！）</h1>
             
             <div id="app">
-                <div class="p-10 text-center text-gray-400">正在同步灵魂文案与实时汇率...</div>
+                <div class="p-20 text-center text-gray-400">正在从 GitHub 加载灵魂数据...</div>
             </div>
 
             <footer class="clear-both mt-16 pt-8 border-t border-gray-300 text-xs text-gray-500">
-                <p>最后编辑于 2026年1月18日。</p>
-                <p id="rate-meta" class="mt-2 text-gray-400"></p>
+                <p id="rate-meta">GitHub Pages 静态驱动</p>
             </footer>
         </div>
     </div>
 
     <script>
+        // 核心修复：增加随机数参数防止 GitHub Pages 缓存旧 JSON
+        const cacheBust = "?t=" + new Date().getTime();
+
         async function start() {
             const app = document.getElementById('app');
             try {
-                // 1. 获取数据
-                const [r, d] = await Promise.all([
-                    fetch('/XoYez1/rate.json').then(res => res.json()),
-                    fetch('./data.json').then(res => res.json())
+                // 在 GitHub Pages 环境中，直接使用相对路径，并增加缓存刷新
+                console.log("正在尝试读取数据...");
+                
+                const [rateRes, dataRes] = await Promise.all([
+                    fetch('/XoYez1/rate.json' + cacheBust),
+                    fetch('/XoYez1/Accessories/data.json' + cacheBust)
                 ]);
 
-                // 2. 智能提取汇率 (解决 toFixed 报错的关键)
-                // 尝试从不同的可能位置获取汇率数字
-                const JPY_RATE = r.rate || (r.data ? r.data.rate : null) || r.conversion_rate || 0.048;
-                
-                if (JPY_RATE === null) throw new Error("无法在 rate.json 中找到有效的汇率字段 (rate)");
+                if (!rateRes.ok || !dataRes.ok) {
+                    throw new Error(`文件获取失败: Rate(${rateRes.status}) Data(${dataRes.status})`);
+                }
 
-                // 更新页眉显示
-                document.getElementById('top-rate').innerText = `实时汇率: 1 JPY = ${Number(JPY_RATE).toFixed(4)} CNY`;
-                document。getElementById('rate-meta').innerText = `数据来源: 本地 JSON 缓存 | 更新时间: ${r.last_update || '未知'}`;
+                const r = await rateRes.json();
+                const d = await dataRes.json();
 
-                // 3. 清空容器并渲染内容
-                app.innerHTML = "";
+                // 提取汇率，增加更多兼容性
+                const JPY_RATE = r.rate || (r.data ? r.data.rate : 0.048);
                 
+                document.getElementById('top-rate').innerText = `1 JPY = ${Number(JPY_RATE).toFixed(4)} CNY`;
+                if(r.last_update) document.getElementById('rate-meta').innerText = `最后更新于: ${r.last_update}`;
+
+                if (!d.sections || d.sections.length === 0) {
+                    app.innerHTML = "<p class='p-10 text-red-500'>错误：data.json 中未找到 sections 内容。</p>";
+                    return;
+                }
+
+                app.innerHTML = ""; // 清空加载提示
+
                 d.sections.forEach(sec => {
-                    // 渲染 InfoBox 的行
+                    // 1. 生成 InfoBox
                     const rows = sec.infobox.fields.map(f => `
                         <tr>
                             <th class="border-t whitespace-nowrap">${f.label}</th>
                             <td class="border-t ${f.class || ''}">${f.value}</td>
                         </tr>`).join('');
 
+                    // 2. 生成内容区
                     let contentHtml = "";
-                    
                     if (sec.type === "character") {
-                        // 灵魂文案特殊处理
                         contentHtml = sec.custom_content;
                     } else {
-                        // 价格列表处理
-                        let sectionTotal = 0;
+                        let total = 0;
                         const itemsHtml = sec.items.map(i => {
-                            let priceStr = "";
+                            let pDisplay = "";
                             if (i.unit === "JPY") {
                                 const cny = i.price * JPY_RATE;
-                                sectionTotal += cny;
-                                priceStr = `${i.price.toLocaleString()} JPY <span class="text-xs text-gray-400 ml-1">(折合 ¥${cny.toFixed(2)})</span>`;
+                                total += cny;
+                                pDisplay = `${i.price.toLocaleString()} JPY <span class="text-xs text-gray-400 ml-1">(约 ¥${cny.toFixed(2)})</span>`;
                             } else {
-                                sectionTotal += i.price;
-                                priceStr = `${i.price.toLocaleString()} 元`;
+                                total += i.price;
+                                pDisplay = `${i.price.toLocaleString()} 元`;
                             }
                             return `
                                 <a href="${i.link}" target="_blank" class="config-link">
                                     <span class="config-label ${i.label_class || ''}">${i.label}</span>
-                                    <span class="font-mono text-gray-700 text-sm">${priceStr}</span>
+                                    <span class="font-mono text-gray-700 text-sm">${pDisplay}</span>
                                 </a>`;
                         }).join('');
 
@@ -98,37 +109,36 @@
                             ${itemsHtml}
                             <div class="flex justify-between max-w-[600px] mt-4 border-t-2 border-gray-800 pt-2 font-bold text-lg text-blue-900 px-2">
                                 <span>总计预估</span>
-                                <span>${sectionTotal.toLocaleString(undefined, {minimumFractionDigits: 2})} 元</span>
+                                <span>${total.toLocaleString(undefined, {minimumFractionDigits: 2})} 元</span>
                             </div>`;
                     }
 
-                    // 组装 Section 插入 DOM
+                    // 3. 渲染
                     app.innerHTML += `
-                        <section class="mb-16 clear-both animate-in fade-in duration-500">
+                        <section class="mb-16 clear-both">
                             <h2 class="section-title text-2xl" id="${sec.id}">${sec.title}</h2>
                             <table class="infobox shadow-sm">
                                 <tr><th colspan="2" class="infobox-title">${sec.infobox.title}</th></tr>
                                 <tr><td colspan="2" class="p-0">
-                                    <div class="bg-gray-100 w-full flex items-center justify-center overflow-hidden min-h-[100px]">
-                                        <img src="${sec。infobox.img}" class="max-w-full h-auto" onerror="this.src='https://placehold.co/400x300?text=图片加载失败'">
-                                    </div>
+                                    <img src="${sec.infobox.img}" class="max-w-full h-auto mx-auto" 
+                                         onerror="this.src='https://placehold.co/400x300?text=图片路径未找到'">
                                 </td></tr>
                                 ${rows}
                             </table>
                             <div class="article-content">${contentHtml}</div>
                         </section>`;
                 });
-console.log("获取到的配置数据：", config);
-if (!config.sections || config.sections.length === 0) {
-    app.innerHTML = "JSON 数据里没有发现 sections 列表！";
-}
+
             } catch (err) {
-                console.error("渲染引擎故障:", err);
+                console.error("GitHub 加载失败:", err);
                 app.innerHTML = `
-                    <div class="p-6 bg-red-50 border-l-4 border-red-500 text-red-700">
-                        <h3 class="font-bold">数据渲染失败</h3>
-                        <p class="text-sm mt-2">原因: ${err.message}</p>
-                        <p class="text-xs mt-4 opacity-70">请检查: <br>1. 是否通过 Live Server 访问<br>2. rate.json 是否包含 "rate" 字段<br>3. data.json 格式是否正确</p>
+                    <div class="p-10 text-center">
+                        <div class="text-red-500 font-bold text-xl mb-4">灵魂载入中断</div>
+                        <div class="text-gray-500 text-sm">${err.message}</div>
+                        <div class="mt-4 p-4 bg-gray-100 text-left text-xs font-mono inline-block">
+                            提示：GitHub Pages 可能需要几分钟生效。<br>
+                            当前尝试路径: ${window.location.href}
+                        </div>
                     </div>`;
             }
         }
