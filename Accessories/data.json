@@ -5,7 +5,7 @@
       "title": "小叶",
       "type": "character",
       "infobox": {
-        "img": "img/xoyez1.webp",
+        "img": "/XoYez1/img/xoyez1.webp",
         "title": "角色信息",
         "fields": [
           { "label": "首次出现", "value": "2024-11-14" },
@@ -20,7 +20,7 @@
       "title": "电脑配置",
       "type": "hardware",
       "infobox": {
-        "img": "img/datapc1.png",
+        "img": "/XoYez1/img/datapc1.png",
         "title": "硬件概览",
         "fields": [
           { "label": "首次发布", "value": "2025-11-21 <br><a href='https://www.bilibili.com/video/BV1pcUjBqEzZ' class='text-blue-600 text-xs'>（仅bilibili发布）</a>" },
@@ -40,7 +40,7 @@
       "title": "原模改模",
       "type": "hardware",
       "infobox": {
-        "img": "img/def.png",
+        "img": "/XoYez1/img/def.png",
         "title": "资产概览",
         "fields": [
           { "label": "首次出没", "value": "2025-11-21" },
