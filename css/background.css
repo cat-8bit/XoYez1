@@ -1,0 +1,19 @@
+@charset "UTF-8"; 
+:root {
+    --bg: #d3fcff;
+}
+body {
+    margin: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+    font-family: "Kiwi Maru", "Kiwi-Fallback", "Patrick Hand", "Patrick-Fallback", cursive;
+    color: var(--text);
+    letter-spacing: .03em;
+    overflow-x: hidden;
+    background: repeating-linear-gradient(0deg, rgba(177, 212, 227, 0.015), rgba(219, 228, 255, 0.015) 2px, transparent 2px, transparent 4px), var(--bg);
+    transition: background-color 0.5s ease-in-out, background-image 0.5s ease-in-out;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}

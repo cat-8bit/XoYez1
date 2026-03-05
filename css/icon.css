@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/**
+ * =========================================
+ * Local SVG Icons Configuration
+ * Manages the base styles for SVG icons and
+ * maps specific classes to their respective
+ * local SVG files.
+ * =========================================
+ */
+
+/* =========================================
+   1. Base SVG Icon Styles
+========================================= */
+.svg-icon { display: inline-block; font-size: 24px; width: 1em; height: 1em; vertical-align: -0.15em; line-height: 1; background-color: currentColor; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; }
+/* =========================================
+   2. Icon File Mapping
+========================================= */
+.icon-share { -webkit-mask-image: url("../images/icons/share.svg"); }
+.icon-push_pin { -webkit-mask-image: url("../images/icons/push_pin.svg"); }
+.icon-ios_share { -webkit-mask-image: url("../images/icons/ios_share.svg"); }
+.icon-wallpaper { -webkit-mask-image: url("../images/icons/wallpaper.svg"); }
+.icon-sync { -webkit-mask-image: url("../images/icons/sync.svg"); }
+.icon-palette { -webkit-mask-image: url("../images/icons/palette.svg"); }
+.icon-visibility_off { -webkit-mask-image: url("../images/icons/visibility_off.svg"); }
+.icon-arrow_forward_ios { -webkit-mask-image: url("../images/icons/arrow_forward_ios.svg"); }
+.icon-home { -webkit-mask-image: url("../images/icons/home.svg"); }
+.icon-sell { -webkit-mask-image: url("../images/icons/sell.svg"); }
+.icon-help { -webkit-mask-image: url("../images/icons/help.svg"); }
+.icon-open_in_new { -webkit-mask-image: url("../images/icons/open_in_new.svg"); }
+.icon-check { -webkit-mask-image: url("../images/icons/check.svg"); }
+.icon-volume_off { -webkit-mask-image: url("../images/icons/volume_off.svg"); }
+.icon-volume_up { -webkit-mask-image: url("../images/icons/volume_up.svg"); }
+.icon-play_circle { -webkit-mask-image: url("../images/icons/play_circle.svg"); }
+.icon-pause_circle { -webkit-mask-image: url("../images/icons/pause_circle.svg"); }
+.icon-touch_app { -webkit-mask-image: url("../images/icons/touch_app.svg"); }
+.icon-ads_click { -webkit-mask-image: url("../images/icons/ads_click.svg"); }
+.icon-close { -webkit-mask-image: url("../images/icons/close.svg"); }
+.icon-attribution { -webkit-mask-image: url("../images/icons/attribution.svg"); }
+.icon-arrow_forward { -webkit-mask-image: url("../images/icons/arrow_forward.svg"); }
+.icon-hourglass_empty { -webkit-mask-image: url("../images/icons/hourglass_empty.svg"); }
+.icon-fullscreen { -webkit-mask-image: url("../images/icons/fullscreen.svg"); }
+.icon-fullscreen_exit { -webkit-mask-image: url("../images/icons/fullscreen_exit.svg"); }
+.icon-play_arrow { -webkit-mask-image: url("../images/icons/play_arrow.svg"); }
+.icon-schedule { -webkit-mask-image: url("../images/icons/schedule.svg"); }
+.icon-mouse { -webkit-mask-image: url("../images/icons/mouse.svg"); }
+
+/* Timeline UI */
+@media (max-width: 768px) { .timeline-wrapper::after { content: url("../images/icons/schedule.svg"); }}
