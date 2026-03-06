@@ -27,3 +27,97 @@ body {
     font-weight: bold;
     padding: 10px 0;
 }
+/* 列表项调整为纵向排列或更紧凑的横向 */
+.news-item {
+  display: flex;
+  flex-direction: column; /* 建议纵向布局，更像社交动态 */
+  padding: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 用户信息区域布局 */
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* 头像样式 */
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* 圆形 */
+  object-fit: cover;
+  margin-right: 10px;
+  border: 1px solid var(--accent); /* 可选：给头像加个边框 */
+}
+
+/* 用户名样式 */
+.user-name {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+/* 日期微调 */
+.news-date {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+/* 内容容器 */
+.news-content-wrapper {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 2px; /* 与头像对齐感 */
+}
+
+/* 回复容器整体样式 */
+.reply-section {
+  background: rgba(0, 0, 0, 0.03); /* 浅灰色背景 */
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  width: 100%; /* 占满容器 */
+  box-sizing: border-box;
+}
+
+/* 每一条回复的样式 */
+.reply-item {
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.reply-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 回复者名字加粗 */
+.reply-user {
+  color: var(--accent); /* 使用你的主题色 */
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* 回复内容颜色稍浅 */
+.reply-content {
+  color: #555;
+}
+
+/* 按钮微调，让它跟在回复区后面 */
+.say-button {
+  margin-top: 10px;
+  /* 保持你原来的 inline-flex 样式... */
+}
+
+/* 正文文字加粗一点点区分回复 */
+.main-text {
+  font-size: 15px;
+  color: #222;
+  line-height: 1.5;
+}

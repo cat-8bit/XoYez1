@@ -12,16 +12,26 @@
 
 <body stype="margin: 0px">
   <div>
+
+
+<!-- 按钮 -->
     <div class="floating-controls stagger-done">
       <button id="share-btn" class="share-button">
-        <span class="svg-icon icon-home"></span>
+        <span class="svg-icon icon-home">
+        </span>
       </button>
       <div class="bg-control-container stagger-done">
         <button id="bg-setting-btn" class="share-button">
-          <span class="svg-icon icon-ios_share"></span>
+          <span class="svg-icon icon-ios_share">
+          </span>
         </button>
       </div>
     </div>
+
+
+
+
+<!-- 小叶介绍 -->
     <header class="container">
       <a
         href="https://www.douyin.com/user/MS4wLjABAAAAtkpcxYaEqvEQVxcTzDwStrf2JqMdssWjs2asIxQ7OSemp-k74Qhk3oa_wKT5FvMT">
@@ -37,57 +47,98 @@
         晚上20:00-22:00（周三休息）<p></p>
         “我曾经风闻有祢，如今亲眼看见祢”</div>
     </header>
+
+
+
+<!-- GIF -->
     <div class="container">
       <section class="media">
         <div class="card reveal stagger stagger-done visible" style="cursor: pointer; transition-delay: 160ms;"><img
-            id="giphy1" class="media-fade-in"
-            src="images/gif/1.jpg"
-            alt="animated gif"></div>
+            id="giphy1" class="media-fade-in" src="images/gif/1.jpg" alt="animated gif"></div>
         <div class="card reveal stagger stagger-done visible" style="cursor: pointer; transition-delay: 200ms;"><img
-            id="giphy2" class="media-fade-in"
-            src="images/gif/2.jpg"
-            alt="animated gif"></div>
+            id="giphy2" class="media-fade-in" src="images/gif/2.jpg" alt="animated gif"></div>
       </section>
-      <section class="video-container reveal stagger stagger-done visible" style="transition-delay: 240ms;">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=116180660853311&bvid=BV1pqPpzFEy5&cid=36492414609&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </section>
-      <section class="news-board reveal stagger visible swing">
-        <div class="news-pin"></div>
 
+
+
+
+<!-- 视频 -->
+      <section class="video-container reveal stagger stagger-done visible" style="transition-delay: 240ms;">
+        <iframe
+          src="//player.bilibili.com/player.html?isOutside=true&aid=116180660853311&bvid=BV1pqPpzFEy5&cid=36492414609&p=1"
+          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </section>
+
+
+
+
+<!-- 说说 -->
+      <section class="news-board reveal stagger visible swing">
         <a href="scrapbook.html?tag=Updates,News" class="news-title ch-lang-animation">
           <span data-i18n="news_title">说说</span>
           <span class="svg-icon icon-arrow_forward_ios news-title-arrow"></span>
         </a>
-
         <div class="news-scroll-container" id="newsContainer">
           <ul class="news-list" id="fullList">
             <li class="news-item">
-              <span class="news-date" title="2026-03-04 20:35:00"><span class="badge-new">New!</span>2026.03.04</span>
+              <div class="user-info">
+    <img src="https://via.placeholder.com/40" alt="Avatar" class="user-avatar">
+    <span class="user-name">猫主子</span>
+  </div>
+              <span class="news-date" title="2026-03-04 20:35:00">
+                <span class="badge-new">
+                  New!
+                </span>
+                2026.03.04
+              </span>
               <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start;">
                 <span>
                   喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵
                 </span>
+                <div class="reply-section">
+      <div class="reply-item">
+        <span class="reply-user">铲屎官 A:</span>
+        <span class="reply-content">快去吃罐头，别在这儿喵了。</span>
+      </div>
+      <div class="reply-item">
+        <span class="reply-user">隔壁老王:</span>
+        <span class="reply-content">加一，我也想养猫。</span>
+      </div>
+    </div>
                 <a href="scrapbook.html?id=scrap_mmbyrec58wfp7"
-                  style="display:inline-flex; align-items:center; gap:2px; background:var(--accent); color:#fff; padding:2px 8px; border-radius:10px; font-size:10px; text-decoration:none; margin-top:6px; position:relative; z-index:100; pointer-events:auto; cursor:pointer;"><span
-                    class="svg-icon icon-open_in_new" style="font-size:12px;"></span>我也说说</a>
+                  style="display:inline-flex; align-items:center; gap:2px; background:var(--accent); color:#fff; padding:2px 8px; border-radius:10px; font-size:10px; text-decoration:none; margin-top:6px; position:relative; z-index:100; pointer-events:auto; cursor:pointer;">
+                  <span class="svg-icon icon-open_in_new" style="font-size:12px;">
+                  </span>我也说说
+                </a>
               </div>
             </li>
           </ul>
         </div>
-
         <button class="news-toggle-btn" id="news-toggle-btn">▼</button>
       </section>
+
+
+
+
+
+<!-- 粉丝 -->
       <section class="scrapbook-teaser reveal stagger visible">
-        <a href="scrapbook.html" class="scrapbook-teaser-card">
+        <a href="fans.html" class="scrapbook-teaser-card">
           <div class="teaser-images" id="teaser-images">
             <div class="teaser-img teaser-img-0">
-              <img src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813c000-ce_o8sTACB7q5MhBA2AAIPAxNEXcTVFEA4iPiakd~c5_300x300.jpeg" class="" alt="Scrapbook preview" loading="lazy">
+              <img
+                src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813c000-ce_o8sTACB7q5MhBA2AAIPAxNEXcTVFEA4iPiakd~c5_300x300.jpeg"
+                class="" alt="Scrapbook preview" loading="lazy">
             </div>
             <div class="teaser-img teaser-img-1">
-              <img src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813c000-ce_osSCA5HfBSK0iEA4EcgxeT8Bwi1Ao9AhpsqqIA~c5_300x300.jpeg" class="" alt="Scrapbook preview" loading="lazy">
+              <img
+                src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813c000-ce_osSCA5HfBSK0iEA4EcgxeT8Bwi1Ao9AhpsqqIA~c5_300x300.jpeg"
+                class="" alt="Scrapbook preview" loading="lazy">
             </div>
             <div class="teaser-img teaser-img-2">
-              <img src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813c000-ce_oEe4AZ2IjdEvsAsSA9AI7H3L8eBBA5BQJGfFgn~c5_300x300.jpeg" class="" alt="Scrapbook preview" loading="lazy">
+              <img
+                src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813c000-ce_oEe4AZ2IjdEvsAsSA9AI7H3L8eBBA5BQJGfFgn~c5_300x300.jpeg"
+                class="" alt="Scrapbook preview" loading="lazy">
             </div>
           </div>
           <div class="teaser-text">
@@ -96,8 +147,15 @@
           </div>
         </a>
       </section>
+
+
+
+
+<!-- link -->
       <section class="links" id="linksContainer">
-        <a class="link reveal visible" href="https://www.douyin.com/user/MS4wLjABAAAAtkpcxYaEqvEQVxcTzDwStrf2JqMdssWjs2asIxQ7OSemp-k74Qhk3oa_wKT5FvMT" target="_blank" rel="noopener noreferrer">
+        <a class="link reveal visible"
+          href="https://www.douyin.com/user/MS4wLjABAAAAtkpcxYaEqvEQVxcTzDwStrf2JqMdssWjs2asIxQ7OSemp-k74Qhk3oa_wKT5FvMT"
+          target="_blank" rel="noopener noreferrer">
           <div class="icon tiktok">
             <img src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="抖音">
           </div>
@@ -105,8 +163,8 @@
           <div class="desc">
             <span>短视频</span>
           </div>
-        </a><a class="link reveal visible" href="https://vrchat.com/home/user/usr_7d3a7624-eccc-4de1-8190-683b9d6c4b02" target="_blank"
-          rel="noopener noreferrer">
+        </a><a class="link reveal visible" href="https://vrchat.com/home/user/usr_7d3a7624-eccc-4de1-8190-683b9d6c4b02"
+          target="_blank" rel="noopener noreferrer">
           <div class="icon giphy">
             <img src="images/icons/vrc.png" alt="VRchat">
           </div>
@@ -125,6 +183,9 @@
           </div>
         </a>
       </section>
+
+
+
     </div>
     <main></main>
     <footer></footer>
