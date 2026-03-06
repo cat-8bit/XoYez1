@@ -5,7 +5,41 @@ html::-webkit-scrollbar {
 body {
     margin: 0px;
 }
+.text-fade-out {
+  animation: fadeAway 2s forwards; /* 2秒内完全淡出并保持透明 */
+}
 
+/* 定义动画：透明度从 0 到 1，位置从下往上移 20px */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* 初始位置向下偏一点，更有动感 */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 应用动画的类 */
+.fade-in-text {
+  animation: fadeInUp 3s ease-out forwards; /* 1.5秒完成，缓动效果 */
+}
+.fade-in2-text {
+  animation: fadeInUp 6s ease-out forwards; /* 1.5秒完成，缓动效果 */
+}
+.fade-in4-text {
+  animation: fadeInUp 12s ease-out forwards; /* 1.5秒完成，缓动效果 */
+}
+.fade-in5-text {
+  animation: fadeInUp 24s ease-out forwards; /* 1.5秒完成，缓动效果 */
+}
+.fade-in6-text {
+  animation: fadeInUp 48s ease-out forwards; /* 1.5秒完成，缓动效果 */
+}
+.fade-in7-text {
+  animation: fadeInUp 1.5s ease-out forwards; /* 1.5秒完成，缓动效果 */
+}
 .global-header {
     min-height: 44px;
     background: #75baff;
