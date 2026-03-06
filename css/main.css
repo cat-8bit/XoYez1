@@ -121,3 +121,10 @@ body {
   color: #222;
   line-height: 1.5;
 }
+
+.news-item {
+  /* 只有底部有一条 3px 的实线 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}

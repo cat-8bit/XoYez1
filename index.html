@@ -73,49 +73,52 @@
 
 
 <!-- 说说 -->
-      <section class="news-board reveal stagger visible swing">
-        <a href="scrapbook.html?tag=Updates,News" class="news-title ch-lang-animation">
-          <span data-i18n="news_title">说说</span>
-          <span class="svg-icon icon-arrow_forward_ios news-title-arrow"></span>
-        </a>
-        <div class="news-scroll-container" id="newsContainer">
-          <ul class="news-list" id="fullList">
-            <li class="news-item">
-              <div class="user-info">
-    <img src="https://via.placeholder.com/40" alt="Avatar" class="user-avatar">
-    <span class="user-name">猫主子</span>
-  </div>
-              <span class="news-date" title="2026-03-04 20:35:00">
-                <span class="badge-new">
-                  New!
-                </span>
-                2026.03.04
-              </span>
-              <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start;">
-                <span>
-                  喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵
-                </span>
-                <div class="reply-section">
-      <div class="reply-item">
-        <span class="reply-user">铲屎官 A:</span>
-        <span class="reply-content">快去吃罐头，别在这儿喵了。</span>
-      </div>
-      <div class="reply-item">
-        <span class="reply-user">隔壁老王:</span>
-        <span class="reply-content">加一，我也想养猫。</span>
-      </div>
-    </div>
-                <a href="scrapbook.html?id=scrap_mmbyrec58wfp7"
-                  style="display:inline-flex; align-items:center; gap:2px; background:var(--accent); color:#fff; padding:2px 8px; border-radius:10px; font-size:10px; text-decoration:none; margin-top:6px; position:relative; z-index:100; pointer-events:auto; cursor:pointer;">
-                  <span class="svg-icon icon-open_in_new" style="font-size:12px;">
-                  </span>我也说说
-                </a>
-              </div>
-            </li>
-          </ul>
+<section class="news-board reveal stagger visible swing">
+  <div class="news-pin"></div>
+  
+  <a href="scrapbook.html?tag=Updates,News" class="news-title ch-lang-animation">
+    <span data-i18n="news_title">说说</span>
+    <span class="svg-icon icon-arrow_forward_ios news-title-arrow"></span>
+  </a>
+
+  <div class="news-scroll-container" id="newsContainer">
+    <ul class="news-list" id="fullList">
+      <li class="news-item">
+        
+        <div class="user-info" style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+          <img src="https://via.placeholder.com/32" class="user-avatar" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(0,0,0,0.1);">
+          <span class="user-name" style="font-size: 13px; font-weight: 600; color: var(--accent, #333);">用户名称</span>
         </div>
-        <button class="news-toggle-btn" id="news-toggle-btn">▼</button>
-      </section>
+
+        <span class="news-date" title="2026-03-04 20:35:00">
+          <span class="badge-new">New!</span>
+          2026.03.04
+        </span>
+
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+          
+          <span class="news-text" style="line-height: 1.5;">
+            喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵
+          </span>
+
+          <div class="reply-section" style="background: rgba(0,0,0,0.04); border-radius: 8px; padding: 8px 10px; margin-top: 8px; width: 100%; box-sizing: border-box;">
+            <div class="reply-item" style="font-size: 12px; margin-bottom: 4px;">
+              <strong style="color: var(--accent);">回复者  :</strong> <span>回复内容...</span>
+            </div>
+          </div>
+
+          <a href="scrapbook.html?id=scrap_mmbyrec58wfp7"
+            style="display:inline-flex; align-items:center; gap:2px; background:var(--accent); color:#fff; padding:2px 8px; border-radius:10px; font-size:10px; text-decoration:none; margin-top:10px; position:relative; z-index:100; pointer-events:auto; cursor:pointer;">
+            <span class="svg-icon icon-open_in_new" style="font-size:12px;"></span>我也说说
+          </a>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <button class="news-toggle-btn" id="news-toggle-btn">▼</button>
+</section>
 
 
 
@@ -195,6 +198,7 @@
     <script src="js/lang.js"></script>
     <script src="js/avatar.js"></script>
     <script src="js/news.js"></script>
+    <script src="js/say.js"></script>
 </body>
 
 </html>

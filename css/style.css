@@ -1952,7 +1952,6 @@ input[type="range"]::-webkit-slider-thumb {
 
     .news-date {
         text-align: center;
-        align-self: center;
         margin-left: 0;
         margin-right: 20px;
     }
