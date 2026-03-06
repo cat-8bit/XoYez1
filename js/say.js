@@ -50,7 +50,6 @@ async function fetchNewsBoard() {
                 <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; width:100%;">
                     <span class="main-content" style="font-size:14px; color:#333;">${item.content}</span>
                     
-                    ${repliesHtml}
 
                     <a href="${item.url}"
                        class="say-button" 

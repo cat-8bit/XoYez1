@@ -10,7 +10,7 @@ async function initNewsBoard() {
         // 1. 一次性获取 JSON (如果是后端 API，这里通常带分页参数)
         const response = await fetch('https://cat-8bit.github.io/XoYez1/data/say.json');
         allData = await response.json();
-        
+
         // 2. 按日期倒序排列
         allData.sort((a, b) => new Date(b.fullDate) - new Date(a.fullDate));
 
@@ -41,24 +41,25 @@ async function initNewsBoard() {
 function loadMoreItems() {
     const listContainer = document.getElementById('fullList');
     const nextBatch = allData.slice(currentIndex, currentIndex + PAGE_SIZE);
-    
+
     nextBatch.forEach(item => {
         // 生成回复 HTML (保留你之前的样式)
         let repliesHtml = '';
         if (item.replies && item.replies.length > 0) {
             repliesHtml = `
-                <div class="reply-section" style="background:rgba(0,0,0,0.04); border-radius:8px; padding:8px 10px; margin-top:8px; width:100%; border-top: 3px solid var(--accent);">
+                <div class="reply-section" style="bakground:rgba(0,0,0,0.04);>
                     ${item.replies.map(r => `
                         <div style="margin-bottom:4px; font-size:12px;">
-                            <strong style="color:var(--accent);">${r.user}:</strong> <span>${r.text}</span>
-                        </div>
+                            <strong style="color:var(--accent); font-size:12px;">${r.user}:</strong> 
+                        <span style="color:#555; font-size:12px;">${r.text}</span>
+                        
                     `).join('')}
                 </div>`;
         }
 
         const li = document.createElement('li');
         li.className = 'news-item';
-        // 注意：这里加入了 3px 的底部分割线
+        // 注意：这里加入了 2px 的底部分割线
         li.style.borderBottom = "3px solid rgba(0,0,0,0.05)";
         li.style.paddingBottom = "15px";
         li.style.marginBottom = "15px";
@@ -72,9 +73,10 @@ function loadMoreItems() {
             <div style="flex:1; width:100%;">
                 <span>${item.content}</span>
                 ${repliesHtml}
-                <a href="scrapbook.html?id=${item.id}" class="say-button" style="display:inline-flex; background:var(--accent); color:#fff; padding:2px 8px; border-radius:10px; font-size:10px; text-decoration:none; margin-top:10px;">
-                   我也说说
-                </a>
+                <a href="${item.url}" class="say-button" style="display:inline-flex; align-items:center; gap:2px; background:var(--accent); color:#fff; padding:2px 8px; border-radius:10px; font-size:10px; text-decoration:none; margin-top:10px; position:relative; z-index:100; pointer-events:auto; cursor:pointer;">
+                        <span class="svg-icon icon-open_in_new" style="font-size:12px;"></span>
+                        SAY
+                    </a>
             </div>
         `;
         listContainer.appendChild(li);
