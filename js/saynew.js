@@ -8,7 +8,7 @@ async function initNewsBoard() {
 
     try {
         // 1. 一次性获取 JSON (如果是后端 API，这里通常带分页参数)
-        const response = await fetch('../data/say.json');
+        const response = await fetch('https://cat-8bit.github.io/XoYez1/data/say.json');
         allData = await response.json();
         
         // 2. 按日期倒序排列

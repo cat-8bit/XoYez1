@@ -2,7 +2,7 @@ async function fetchNewsBoard() {
     const listContainer = document.getElementById('fullList');
     
     try {
-        const response = await fetch('../data/say.json');
+        const response = await fetch('https://cat-8bit.github.io/XoYez1/data/say.json');
         let data = await response.json();
         
         // 1. 比较 fullDate，按时间倒序排列 (最新的在最上面)
